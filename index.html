@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/styles.css">
+    <script src="https://kit.fontawesome.com/1a3e3b0cad.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body class="background">
+        <img src="images/drops4.jpg" alt="BlueSky" class="blueSky">
+    <div class="box container">
+        <div class="main">
+            <form id="search-form">
+                <div class="row">
+                    <div class="col-4">
+                    <div class="form-group longBoard">
+                        <input 
+                        type="text" 
+                        class="form-control shadow-sm p-2 mb-2 bg-white rounded" 
+                        id="formGroupExampleInput" 
+                        placeholder="Enter your city" 
+                        autofocus="on"
+                        autocomplete="off"
+                        />
+                    </div>
+                    </div>
+                    <div class="col-3">
+                        <button type="submit" 
+                        class="btn btn-primary mb-2 p-2 buttonSubmit shadow-sm " 
+                        id="button-Submit">
+                        Submit
+                        </button>
+                    </div>
+                       <div class="col-5">
+                        <button type="submit" 
+                        class="btn btn-primary mb-2 p-2 buttonSubmit shadow-sm" id="button-current-location">
+                        Use your location
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>    
+<div class="row">
+    <div class="col-5">
+        <h3 class="main cityHolder"> 
+    <span class= "mainCityWeather locationSign"><i class="fa-solid fa-location-dot"></i></span>
+    <span id="main-city">Lodon</span><span>, </span><span id="country-code">GB</span>
+        </h3>
+    </div>
+    <div class="col-7">
+    <h3 class="main mainCityWeather" id="currentTime"></h3>
+    </div>
+</div>        
+<h5 class="main mainCityWeather">
+    <span>Current weather: </span>
+        <span class="currentDegree" id="weather-in-main-city">
+        19 </span><span>°</span>
+        <div>
+        <a href="#"  id="fahrenheit-temperature" class="degreesChangeLink">Show Fahrenheit</a>
+        <a href="#"  id="celsius-temperature" class ="degreesChangeLink">Back to Celcius</a>
+        </span> <i class="fa-solid fa-cloud-sun currentWeatherSign"></i>
+        </div>
+    </span>
+
+    <div>
+    Wind: <span class="currentWind">3</span> m/s 
+    </div>
+    <div id="descrition"></div>
+</h5>
+     
+    <div class="row days">
+        <div class="col miniBox">
+            Monday
+            <div>20JUN</div>                 
+            <div class="border border-primary rounded temperature">19°/10°</div>
+            <div class="border border-primary rounded-circle weatherSigns">
+                <i class="fa-solid fa-cloud-sun-rain"></i>
+            </div>
+        </div>
+        <div class="col miniBox">
+            Tuesday
+            <div>21JUN</div>            
+            <div class="border border-primary rounded temperature">18°/10°</div>
+            <div class="border border-primary rounded-circle weatherSigns">
+                <i class="fa-solid fa-cloud"></i>
+            </div>
+        </div>
+        <div class="col miniBox">
+           Wednesday
+           <div>22JUN</div>            
+            <div class="border border-primary rounded temperature">17°/8°</div>
+            <div class="border border-primary rounded-circle weatherSigns">
+                <i class="fa-solid fa-cloud-rain"></i>
+            </div>
+        </div>
+        <div class="col miniBox">
+           Thursday
+           <div>23JUN</div>            
+            <div class="border border-primary rounded temperature">17°/7°</div>
+            <div class="border border-primary rounded-circle weatherSigns">
+                <i class="fa-solid fa-cloud-showers-heavy"></i>
+            </div>
+        </div>
+        <div class="col miniBox">
+            Friday
+            <div>24JUN</div>            
+            <div class="border border-primary rounded temperature">19°/10°</div>
+            <div class="border border-primary rounded-circle weatherSigns">
+                <i class="fa-solid fa-cloud-sun"></i>
+            </div>
+        </div>
+        <div class="col miniBox">
+            Saturday
+            <div>25JUN</div>
+            <div class="border border-primary rounded temperature">22°/12°</div>
+            <div class="border border-primary rounded-circle weatherSigns">
+                <i class="fa-solid fa-sun"></i>
+            </div>
+
+            <script src="src/index.js"></script>
+        
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+.background{
+background-color: rgba(42, 230, 236, 0.2);
+}
+.blueSky{
+    position: fixed;
+    top: 0px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0.5;
+    ;
+}
+#descrition{
+text-transform: capitalize;
+}
+
+
+.box{
+    position: relative;
+    margin: 10px 20px;
+    border: 1px solid #86b7fe;
+    padding: 20px 10px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    opacity: 0.9;
+}
+.longBoard{
+    width: 100%;
+    display: inline-block;
+}
+.submitButton{
+    width: auto;
+}
+.buttonSubmit {
+    background-color: #86b7fe;
+    border-color: #86b7fe;
+    width: 100%;
+    margin-left: 0;
+}
+.buttonSubmit:hover {
+    background-color: #82b0f5
+}
+.main {
+    margin: 0px 20px;
+    padding: 9px 0px 0px 0px;
+    font-weight: bold;
+    color: #000000;
+    text-transform: capitalize;
+  
+}
+.cityHolder{
+    white-space: nowrap;
+}
+.currentWeatherSign{
+    color: #86b7fe;
+}
+.mainCityWeather{
+    color: black;
+    font-family: 'Quicksand', sans-serif;
+    padding-left: 12px;
+}
+.locationSign{
+    font-size: large;
+    text-align: left;
+    padding-bottom: 6px;
+    height: 20px;
+}
+.days{
+    margin: 20px 0px 20px 20px;
+    padding: 0px 40px 15px 0px;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    max-width: fit-content; 
+}
+.temperature{
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    margin: 10px auto;
+    width: 90px;
+    padding: 10px 0px 10px 0px;
+}
+.degreesChangeLink{
+    font-size: small;
+}
+.miniBox {
+    margin: 0px 22px 22px 0px;
+    padding: 0px 0px 0px 0px;
+}
+.weatherSigns{
+    display: inline-block;
+    width: 80px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    margin: 0 auto;
+    color: #86b7fe;
+    background-color: white;
+
+}
+
+
