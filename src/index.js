@@ -21,6 +21,7 @@ formatDate(new Date());
 let currentTime = document.querySelector("#currentTime");
 currentTime.innerHTML = formatDate(new Date());
 
+
             
 function ShowWeatherforCity(response)
 {
