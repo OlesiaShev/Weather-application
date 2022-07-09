@@ -1,7 +1,6 @@
 .background{
     background-image: url(../images/drops4.jpg);
     background-size: cover;
-    background-color: rgba(42, 230, 236, 0.2);
 }
 #descrition{
 text-transform: capitalize;
@@ -20,6 +19,7 @@ text-transform: capitalize;
 .longBoard{
     width: 100%;
     display: inline-block;
+    height: 100%;
 }
 .submitButton{
     width: auto;
@@ -33,8 +33,11 @@ text-transform: capitalize;
 .buttonSubmit:hover {
     background-color: #82b0f5
 }
+.fixedHeight{
+    height: 90%;
+}
 .main {
-    margin: 0px 20px;
+    margin: 0px;
     padding: 9px 0px 0px 0px;
     font-weight: bold;
     color: #000000;
@@ -58,11 +61,11 @@ text-transform: capitalize;
     height: 20px;
 }
 .days{
-    margin: 20px 0px 20px 20px;
-    padding: 0px 40px 15px 0px;
+    margin: 10px 0px 0px 5px;
+    padding: 0px;
     text-align: center;
     font-family: 'Quicksand', sans-serif;
-    max-width: fit-content; 
+    max-width: max-content;
 }
 .temperature{
     text-align: center;
