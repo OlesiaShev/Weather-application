@@ -8,7 +8,6 @@ let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
     if (hours > 0&& hours <10) {
         hours = `0${hours}`;
     };
-
     let minutes = now.getMinutes();
         if (minutes>0 &&minutes<10) {
         minutes = `0${minutes}`;
@@ -27,8 +26,7 @@ function formatDateNew(timestamp)
     let hours = date.getHours();
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let day = days[date.getDay()];
-    //calculate the date
-    if (hours > 0&& hours <10) {
+    if (hours > 0 && hours <10) {
         hours = `0${hours}`;
     };
     let minutes = date.getMinutes();
@@ -46,21 +44,26 @@ function ShowWeatherforCity(response)
         let countryCode = response.data.sys.country;
         let humidity = response.data.main.humidity;
         let input = response.data.name;
-        let currentDegree = document.querySelector(".currentDegree"); ///
-        let currentWind = document.querySelector(".currentWind");// 
-        let currentDescription = document.querySelector("#description"); // 
-        let currentCountryCode = document.querySelector("#country-code");//
+        let icon = response.data.weather[0].icon;
+    
+        let currentDegree = document.querySelector(".currentDegree");
+        let currentWind = document.querySelector(".currentWind");
+        let currentDescription = document.querySelector("#description");
+        let currentCountryCode = document.querySelector("#country-code");
         let mainCity = document.querySelector("#main-city");
         let currentHumidity = document.querySelector("#humidity");
-        let lastUpdatedTime = document.querySelector("#lastUpdatedTime");
+        let lastUpdatedTime = document.querySelector("#currentTime");
+        let currentIcon = document.querySelector("#icon");
+    
         lastUpdatedTime.innerHTML = formatDateNew(response.data.dt*1000);
-        console.log(input);
         currentDegree.innerHTML = temperature;
         currentWind.innerHTML = wind;
         currentDescription.innerHTML = description;
         mainCity.innerHTML = input;
         currentCountryCode.innerHTML = countryCode;
         currentHumidity.innerHTML = humidity;
+    currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+    currentIcon.setAttribute("alt", response.data.weather[0].description);
 
     let tempF = document.querySelector("#fahrenheit-temperature");
     tempF.addEventListener("click", changeTempToF);
