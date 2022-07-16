@@ -21,36 +21,51 @@ formatDate(new Date());
 let currentTime = document.querySelector("#currentTime");
 currentTime.innerHTML = formatDate(new Date());
 
-
+function formatDateNew(timestamp)
+{
+    let date = new Date(timestamp);
+    let hours = date.getHours();
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let day = days[date.getDay()];
+    //calculate the date
+    if (hours > 0&& hours <10) {
+        hours = `0${hours}`;
+    };
+    let minutes = date.getMinutes();
+        if (minutes>0 &&minutes<10) {
+        minutes = `0${minutes}`;
+    };
+    return `${day} ${hours}:${minutes}`;
+}
             
 function ShowWeatherforCity(response)
-{
-    console.log(response);
+{        console.log(response);
         let temperature = Math.round(response.data.main.temp);
         let wind = response.data.wind.speed;
         let description = response.data.weather[0].description;
-    let countryCode = response.data.sys.country;
-    let humidity = response.data.main.humidity;
+        let countryCode = response.data.sys.country;
+        let humidity = response.data.main.humidity;
+        let input = response.data.name;
         let currentDegree = document.querySelector(".currentDegree"); ///
         let currentWind = document.querySelector(".currentWind");// 
         let currentDescription = document.querySelector("#description"); // 
         let currentCountryCode = document.querySelector("#country-code");//
-    let mainCity = document.querySelector("#main-city");
-    let currentHumidity = document.querySelector("#humidity");
-
-        let input = response.data.name;
+        let mainCity = document.querySelector("#main-city");
+        let currentHumidity = document.querySelector("#humidity");
+        let lastUpdatedTime = document.querySelector("#lastUpdatedTime");
+        lastUpdatedTime.innerHTML = formatDateNew(response.data.dt*1000);
         console.log(input);
         currentDegree.innerHTML = temperature;
         currentWind.innerHTML = wind;
         currentDescription.innerHTML = description;
         mainCity.innerHTML = input;
-    currentCountryCode.innerHTML = countryCode;
-    currentHumidity.innerHTML = humidity;
+        currentCountryCode.innerHTML = countryCode;
+        currentHumidity.innerHTML = humidity;
 
-let tempF = document.querySelector("#fahrenheit-temperature");
-tempF.addEventListener("click", changeTempToF);
-let tempC = document.querySelector("#celsius-temperature");
-tempC.addEventListener("click", changeTempToC);
+    let tempF = document.querySelector("#fahrenheit-temperature");
+    tempF.addEventListener("click", changeTempToF);
+    let tempC = document.querySelector("#celsius-temperature");
+    tempC.addEventListener("click", changeTempToC);
             
 function changeTempToF(event) 
 {
