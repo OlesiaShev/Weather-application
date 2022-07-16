@@ -25,22 +25,27 @@ currentTime.innerHTML = formatDate(new Date());
             
 function ShowWeatherforCity(response)
 {
+    console.log(response);
         let temperature = Math.round(response.data.main.temp);
         let wind = response.data.wind.speed;
-        let descrition = response.data.weather[0].description;
-        let countryCode = response.data.sys.country;
+        let description = response.data.weather[0].description;
+    let countryCode = response.data.sys.country;
+    let humidity = response.data.main.humidity;
         let currentDegree = document.querySelector(".currentDegree"); ///
         let currentWind = document.querySelector(".currentWind");// 
-        let currentDescription = document.querySelector("#descrition"); // 
+        let currentDescription = document.querySelector("#description"); // 
         let currentCountryCode = document.querySelector("#country-code");//
-        let mainCity = document.querySelector("#main-city");
+    let mainCity = document.querySelector("#main-city");
+    let currentHumidity = document.querySelector("#humidity");
+
         let input = response.data.name;
         console.log(input);
         currentDegree.innerHTML = temperature;
         currentWind.innerHTML = wind;
-        currentDescription.innerHTML = descrition;
+        currentDescription.innerHTML = description;
         mainCity.innerHTML = input;
-        currentCountryCode.innerHTML = countryCode;
+    currentCountryCode.innerHTML = countryCode;
+    currentHumidity.innerHTML = humidity;
 
 let tempF = document.querySelector("#fahrenheit-temperature");
 tempF.addEventListener("click", changeTempToF);
