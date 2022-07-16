@@ -62,8 +62,8 @@ function ShowWeatherforCity(response)
         mainCity.innerHTML = input;
         currentCountryCode.innerHTML = countryCode;
         currentHumidity.innerHTML = humidity;
-    currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
-    currentIcon.setAttribute("alt", response.data.weather[0].description);
+        currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+        currentIcon.setAttribute("alt", response.data.weather[0].description);
 
     let tempF = document.querySelector("#fahrenheit-temperature");
     tempF.addEventListener("click", changeTempToF);
@@ -77,6 +77,8 @@ function changeTempToF(event)
             let temp = temperature;
             let tempF = Math.round(temp * 1.8 + 32);
             temperatureC.innerHTML = tempF;
+            document.querySelector("#fahrenheit-temperature").classList.add("active");
+            document.querySelector("#celsius-temperature").classList.remove("active");
 };
 
 function changeTempToC(event) 
@@ -85,6 +87,8 @@ function changeTempToC(event)
             let temperatureC = document.querySelector("#weather-in-main-city");
             let temp = temperature;
             temperatureC.innerHTML = temp;
+            document.querySelector("#fahrenheit-temperature").classList.remove("active");
+            document.querySelector("#celsius-temperature").classList.add("active");
 };
 };
 
@@ -111,6 +115,8 @@ function replaceCity(event)
         document.location.reload()
     }
     entered.value = "";
+    document.querySelector("#fahrenheit-temperature").classList.add("active");
+     document.querySelector("#celsius-temperature").classList.add("active");
 };
 
 function showCurrentPosition(position)
