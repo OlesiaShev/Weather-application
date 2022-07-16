@@ -116,7 +116,7 @@ function replaceCity(event)
     }
     entered.value = "";
     document.querySelector("#fahrenheit-temperature").classList.add("active");
-     document.querySelector("#celsius-temperature").classList.add("active");
+    document.querySelector("#celsius-temperature").classList.add("active");
 };
 
 function showCurrentPosition(position)
