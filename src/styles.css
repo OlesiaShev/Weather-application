@@ -62,7 +62,7 @@ text-transform: capitalize;
 }
 
 .main {
-    margin-top: 5px;
+    margin-top: 0px;
     padding: 0px 0px 0px 0px;
     font-weight: bold;
     color: #000000;
@@ -138,6 +138,13 @@ text-transform: capitalize;
 }
 .mainCityWeather .active:hover {
   text-decoration: none;
+}
+.weather-forecast-max{
+    color: #000000;
+}
+.weather-forecast-min{
+    color: #000000;
+    opacity: 0.5;
 }
 
 
