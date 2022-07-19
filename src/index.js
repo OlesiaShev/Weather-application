@@ -35,7 +35,30 @@ function formatDateNew(timestamp)
     };
     return `${day} ${hours}:${minutes}`;
 }
-            
+  
+function showForecast()
+{
+    let forecastElement = document.querySelector("#forecast");
+    daysForecast = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let forecastHTML = "";
+     daysForecast.forEach(function (day)
+    {
+    forecastHTML = forecastHTML + `
+        <div class="col-4 col-sm-2 miniBox">
+            ${day}
+            <div>20JUN</div>                 
+            <div class="border border-primary rounded temperature"><span class="weather-forecast-max">19°</span>/<span
+                    class="weather-forecast-min">10°</span></div>
+            <div class="border border-primary rounded-circle weatherSigns">
+                <i class="fa-solid fa-cloud-sun-rain"></i>
+            </div>
+            </div>
+    `;
+    });
+    forecastElement.innerHTML = forecastHTML;
+
+}
+showForecast();
 function ShowWeatherforCity(response)
 {        console.log(response);
         let temperature = Math.round(response.data.main.temp);
@@ -138,6 +161,8 @@ function navigatorStartFunction(event)
     event.preventDefault();
     navigator.geolocation.getCurrentPosition(showCurrentPosition);
 };
+
+showCity("London");
 
 let search = document.querySelector("#button-Submit");
 search.addEventListener("click", replaceCity);

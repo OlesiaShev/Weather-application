@@ -86,11 +86,13 @@ text-transform: capitalize;
     height: 20px;
 }
 .days{
-    margin: 10px 0px 0px 5px;
+    margin: 20px 0px 0px 16px;
     padding: 0px;
     text-align: center;
     font-family: 'Quicksand', sans-serif;
     max-width: max-content;
+    display: flex;
+    justify-content: center;
 }
 .temperature{
     text-align: center;
