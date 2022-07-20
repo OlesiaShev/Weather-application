@@ -36,8 +36,9 @@ function formatDateNew(timestamp)
     return `${day} ${hours}:${minutes}`;
 }
   
-function showForecast()
+function showForecast(response)
 {
+    console.log(response.data.daily);
     let forecastElement = document.querySelector("#forecast");
     daysForecast = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let forecastHTML = "";
@@ -58,7 +59,17 @@ function showForecast()
     forecastElement.innerHTML = forecastHTML;
 
 }
-showForecast();
+function getForecast(lon, lat)
+{
+    console.log(lon);
+    console.log(lat);
+    let apiKey = "4ac2c287c8855d10edca04e5759fe661";
+    let units = "metric";
+    let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={minutely}&units=${units}&appid=${apiKey}`;
+    console.log(apiURL);
+    axios.get(apiURL).then(showForecast);
+}
+
 function ShowWeatherforCity(response)
 {        console.log(response);
         let temperature = Math.round(response.data.main.temp);
@@ -68,6 +79,8 @@ function ShowWeatherforCity(response)
         let humidity = response.data.main.humidity;
         let input = response.data.name;
         let icon = response.data.weather[0].icon;
+        let coordLat = response.data.coord.lat;
+        let coordLon = response.data.coord.lon;
     
         let currentDegree = document.querySelector(".currentDegree");
         let currentWind = document.querySelector(".currentWind");
@@ -87,6 +100,8 @@ function ShowWeatherforCity(response)
         currentHumidity.innerHTML = humidity;
         currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
         currentIcon.setAttribute("alt", response.data.weather[0].description);
+        
+    getForecast(coordLat, coordLon);
 
     let tempF = document.querySelector("#fahrenheit-temperature");
     tempF.addEventListener("click", changeTempToF);
@@ -121,6 +136,8 @@ function showCity(input)
     let units = "metric";
     let apiUrlCity = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`
     axios.get(apiUrlCity).then(ShowWeatherforCity);
+
+
 };
 
 function replaceCity(event)
