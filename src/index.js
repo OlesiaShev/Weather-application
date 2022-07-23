@@ -37,25 +37,31 @@ function formatDateNew(timestamp)
 }
 function formatDayFromForecast(timestamp)
 {
-    let date = new Date(timestamp * 1000);
-    let day = date.getDay();
+    console.log(timestamp);
+    let now = new Date(timestamp * 1000);
+    let day = now.getDay();
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let monthes =  ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    let month = monthes[now.getMonth()];
+    let date = now.getDate();
+    console.log({ prediction: days[day], date, month });
+    return {prediction: days[day], date, month};
+
+
 }
 
 function showForecast(response)
 {
-    console.log(response.data.daily);
     let forecastElement = document.querySelector("#forecast");
-    let forecast = response.data.daily
-//    daysForecast = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let forecast = response.data.daily.slice(1, 7);
     let forecastHTML = "";
-     forecast.forEach(function (forecastDay)
-    {
+     forecast.forEach(function (forecastDay){
     forecastHTML = forecastHTML + `
-        <div class="col-4 col-sm-2 miniBox">
+        <div class="col-4 col-sm miniBox">
             ${formatDayFromForecast(forecastDay.dt)}
             <div>20JUN</div>                 
-            <div class="border border-primary rounded temperature"><span class="weather-forecast-max">${forecastDay.temp.max}°</span>/<span
-                    class="weather-forecast-min">${forecastDay.temp.min}°</span></div>
+            <div class="border border-primary rounded temperature"><span class="weather-forecast-max">${Math.round(forecastDay.temp.max)}°</span>/<span
+                    class="weather-forecast-min">${Math.round(forecastDay.temp.min)}°</span></div>
             <div class="border border-primary rounded-circle weatherSigns">
                 <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="weather">
             </div>
@@ -63,8 +69,8 @@ function showForecast(response)
     `;
     });
     forecastElement.innerHTML = forecastHTML;
+};
 
-}
 function getForecast(lon, lat)
 {
     console.log(lon);
