@@ -37,17 +37,24 @@ function formatDateNew(timestamp)
 }
 function formatDayFromForecast(timestamp)
 {
-    console.log(timestamp);
     let now = new Date(timestamp * 1000);
+    let monthes = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
     let day = now.getDay();
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let monthes =  ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    let forecastDay = days[day];
+    console.log(day);
     let month = monthes[now.getMonth()];
     let date = now.getDate();
-    console.log({ prediction: days[day], date, month });
-    return {prediction: days[day], date, month};
+    let prediction = {
+        forecastDay,
+        date,
+        month
+    }
+    console.log(prediction.forecastDay);
+    console.log(prediction.date);
+    console.log(prediction.month);
 
-
+    return prediction;
 }
 
 function showForecast(response)
@@ -55,11 +62,14 @@ function showForecast(response)
     let forecastElement = document.querySelector("#forecast");
     let forecast = response.data.daily.slice(1, 7);
     let forecastHTML = "";
-     forecast.forEach(function (forecastDay){
+    forecast.forEach(function (forecastDay)
+    {
+        formatDayFromForecast(forecastDay.dt);
+        console.log(formatDayFromForecast(forecastDay.dt).forecastDay);
     forecastHTML = forecastHTML + `
         <div class="col-4 col-sm miniBox">
-            ${formatDayFromForecast(forecastDay.dt)}
-            <div>20JUN</div>                 
+            ${formatDayFromForecast(forecastDay.dt).forecastDay}
+            <div>${formatDayFromForecast(forecastDay.dt).date}</div>
             <div class="border border-primary rounded temperature"><span class="weather-forecast-max">${Math.round(forecastDay.temp.max)}°</span>/<span
                     class="weather-forecast-min">${Math.round(forecastDay.temp.min)}°</span></div>
             <div class="border border-primary rounded-circle weatherSigns">
@@ -73,17 +83,13 @@ function showForecast(response)
 
 function getForecast(lon, lat)
 {
-    console.log(lon);
-    console.log(lat);
     let apiKey = "4ac2c287c8855d10edca04e5759fe661";
     let units = "metric";
     let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
-    console.log(apiURL);
     axios.get(apiURL).then(showForecast);
 }
 
-function ShowWeatherforCity(response)
-{        console.log(response);
+function ShowWeatherforCity(response){
         let temperature = Math.round(response.data.main.temp);
         let wind = response.data.wind.speed;
         let description = response.data.weather[0].description;
@@ -175,8 +181,6 @@ function showCurrentPosition(position)
 {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    console.log(lat);
-    console.log(lon);
     let apiKey = "4ac2c287c8855d10edca04e5759fe661";
     let units = "metric";
     let apiUrlbyGPS = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
