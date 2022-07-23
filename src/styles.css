@@ -98,7 +98,7 @@ text-transform: capitalize;
     text-align: center;
     font-family: 'Quicksand', sans-serif;
     margin: 10px auto;
-    width: 90px;
+    max-width: 100px;
     padding: 10px 0px 10px 0px;
 }
 .degreesChangeLink{
@@ -110,7 +110,6 @@ text-transform: capitalize;
 }
 .weatherSigns{
     display: inline-block;
-    width: 80px;
     font-family: 'Quicksand', sans-serif;
     font-size: 50px;
     margin: 0 auto;

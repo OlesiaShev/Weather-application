@@ -35,23 +35,29 @@ function formatDateNew(timestamp)
     };
     return `${day} ${hours}:${minutes}`;
 }
-  
+function formatDayFromForecast(timestamp)
+{
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+}
+
 function showForecast(response)
 {
     console.log(response.data.daily);
     let forecastElement = document.querySelector("#forecast");
-    daysForecast = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let forecast = response.data.daily
+//    daysForecast = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let forecastHTML = "";
-     daysForecast.forEach(function (day)
+     forecast.forEach(function (forecastDay)
     {
     forecastHTML = forecastHTML + `
         <div class="col-4 col-sm-2 miniBox">
-            ${day}
+            ${formatDayFromForecast(forecastDay.dt)}
             <div>20JUN</div>                 
-            <div class="border border-primary rounded temperature"><span class="weather-forecast-max">19°</span>/<span
-                    class="weather-forecast-min">10°</span></div>
+            <div class="border border-primary rounded temperature"><span class="weather-forecast-max">${forecastDay.temp.max}°</span>/<span
+                    class="weather-forecast-min">${forecastDay.temp.min}°</span></div>
             <div class="border border-primary rounded-circle weatherSigns">
-                <i class="fa-solid fa-cloud-sun-rain"></i>
+                <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="weather">
             </div>
             </div>
     `;
