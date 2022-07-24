@@ -5,11 +5,11 @@ let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
     let currentDay = days[now.getDay()];
     
     let hours = now.getHours();  
-    if (hours > 0&& hours <10) {
+    if (hours <10) {
         hours = `0${hours}`;
     };
     let minutes = now.getMinutes();
-        if (minutes>0 &&minutes<10) {
+        if (minutes<10) {
         minutes = `0${minutes}`;
     };
 let current = `${currentDay}, ${hours}:${minutes}`;
@@ -30,7 +30,7 @@ function formatDateNew(timestamp)
         hours = `0${hours}`;
     };
     let minutes = date.getMinutes();
-        if (minutes>0 &&minutes<10) {
+        if (minutes>0 && minutes<10) {
         minutes = `0${minutes}`;
     };
     return `${day} ${hours}:${minutes}`;
@@ -42,7 +42,6 @@ function formatDayFromForecast(timestamp)
     let day = now.getDay();
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let forecastDay = days[day];
-    console.log(day);
     let month = monthes[now.getMonth()];
     let date = now.getDate();
     let prediction = {
@@ -50,10 +49,6 @@ function formatDayFromForecast(timestamp)
         date,
         month
     }
-    console.log(prediction.forecastDay);
-    console.log(prediction.date);
-    console.log(prediction.month);
-
     return prediction;
 }
 
@@ -64,12 +59,11 @@ function showForecast(response)
     let forecastHTML = "";
     forecast.forEach(function (forecastDay)
     {
-        formatDayFromForecast(forecastDay.dt);
-        console.log(formatDayFromForecast(forecastDay.dt).forecastDay);
+    formatDayFromForecast(forecastDay.dt);
     forecastHTML = forecastHTML + `
         <div class="col-4 col-sm miniBox">
             ${formatDayFromForecast(forecastDay.dt).forecastDay}
-            <div>${formatDayFromForecast(forecastDay.dt).date}</div>
+            <div>${formatDayFromForecast(forecastDay.dt).date} ${formatDayFromForecast(forecastDay.dt).month}</div>
             <div class="border border-primary rounded temperature"><span class="weather-forecast-max">${Math.round(forecastDay.temp.max)}°</span>/<span
                     class="weather-forecast-min">${Math.round(forecastDay.temp.min)}°</span></div>
             <div class="border border-primary rounded-circle weatherSigns">
