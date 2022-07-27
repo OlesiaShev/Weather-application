@@ -76,13 +76,13 @@ function showForecast(response)
     forecastElement.innerHTML = forecastHTML;
 };
 
-function getForecast(lon, lat)
+function getForecast(lat, lon)
 {
     let apiKey = "4ac2c287c8855d10edca04e5759fe661";
     let units = "metric";
-    let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
-    console.log(apiURL);
-    axios.get(apiURL).then(showForecast);
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+    console.log(apiUrl);
+    axios.get(apiUrl).then(showForecast);
 }
 
 function ShowWeatherforCity(response)
